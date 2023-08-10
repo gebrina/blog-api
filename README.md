@@ -31,3 +31,9 @@ npm install
 ```
 
 if it keeps failing you can use `npm i --force`
+
+4, run the project
+
+```
+npm run start:dev
+```
