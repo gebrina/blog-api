@@ -9,13 +9,15 @@ import {
   Controller,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from 'src/entities/user.entity';
+import { User } from '../entities/user.entity';
+import { Public } from '../auth/auth.service';
 
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
 
   @Get()
+  @Public()
   async findAll(): Promise<Partial<User>[]> {
     const users = await this.userService.findAll();
     const tempUsers: Partial<User>[] = [];
@@ -34,6 +36,7 @@ export class UserController {
   }
 
   @Post()
+  @Public()
   create(@Body() user: User): Promise<User> {
     return this.userService.create(user);
   }

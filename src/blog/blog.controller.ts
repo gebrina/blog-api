@@ -28,6 +28,7 @@ export class BlogController {
   }
 
   @Get(':id')
+  @Public()
   findOne(@Param('id') id: string): Promise<Blog> {
     return this.blogService.findOne(id);
   }

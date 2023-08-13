@@ -22,7 +22,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid Password!');
     }
     const { password: userPassword, ...other } = user;
-    const token = await this.jwtService.signAsync(other);
-    return token;
+    const access_token = await this.jwtService.signAsync(other);
+    return { user: other, access_token };
   }
 }
